@@ -1,7 +1,6 @@
 // Webpack configuration file for a JS project
 const path = require("path");
-const loader = require("sass-loader");
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   // entry file
   mode: 'development', // production
@@ -22,7 +21,16 @@ module.exports = {
         use: ['style-loader','css-loader', 'sass-loader']
       }
     ]
-  }
+  },
+
+  // handle plugins
+  plugins: [
+    new HtmlWebpackPlugin({
+        title: 'Learning Webpack',
+        filename: 'index.html',
+        template: path.resolve(__dirname, 'src', 'index.html'),
+    }),
+  ],
 };
 
 
